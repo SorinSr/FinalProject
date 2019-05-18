@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManagerTrip.ManageTrip">
+
+
+
+    <EditText
+        android:id="@+id/tripName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin20dp"
+        android:layout_marginEnd="@dimen/margin20dp"
+        android:layout_marginRight="@dimen/margin16dp"
+        android:ems="10"
+        android:hint="Trip Name"
+        android:inputType="textPersonName"
+        android:outlineAmbientShadowColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStart" />
+
+    <EditText
+        android:id="@+id/destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:layout_marginEnd="@dimen/margin20dp"
+        android:layout_marginRight="@dimen/margin16dp"
+        android:ems="10"
+        android:hint="Destination"
+        android:inputType="textPersonName"
+        android:outlineAmbientShadowColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripName" />
+
+    <TextView
+        android:id="@+id/textViewTripType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:text="Trip Type"
+        android:textSize="@dimen/textSize16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/destination" />
+
+    <CheckBox
+        android:id="@+id/checkBoxCityBreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin20dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:text="City Break"
+        android:textSize="@dimen/textSize16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTripType" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSeaSide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin20dp"
+        android:layout_marginLeft="@dimen/margin20dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:text="Sea Side"
+        android:textSize="@dimen/textSize16sp"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxCityBreak"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTripType" />
+
+    <CheckBox
+        android:id="@+id/checkBoxMountains"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin20dp"
+        android:layout_marginLeft="@dimen/margin20dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:text="Mountains"
+        android:textSize="@dimen/textSize16sp"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxSeaSide"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTripType" />
+
+    <TextView
+        android:id="@+id/textViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:text="Price"
+        android:textSize="@dimen/textSize16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxCityBreak" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginStart="@dimen/margin20dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:layout_marginEnd="@dimen/margin20dp"
+        android:layout_marginRight="@dimen/margin16dp"
+        android:max="10"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
+
+    <Button
+        android:id="@+id/buttonStartDate"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:text="Start Date"
+        android:textSize="@dimen/textSize16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"/>
+
+    <TextView
+        android:id="@+id/textViewStartDate"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="DD/MM/YYYY"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartDate" />
+
+    <Button
+        android:id="@+id/buttonEndDate"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="230dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:text="End Date"
+        android:textSize="@dimen/textSize16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/textViewEndDate"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="DD/MM/YYYY"
+        android:inputType="date"
+        app:layout_constraintStart_toEndOf="@+id/textViewStartDate"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEndDate" />
+
+    <TextView
+        android:id="@+id/textViewRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:text="Rating"
+        android:textSize="@dimen/textSize16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEndDate" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="@dimen/margin16dp"
+        android:layout_marginRight="@dimen/margin16dp"
+        android:onClick="onClickSave"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_select_photo" />
+
+    <TextView
+        android:id="@+id/textViewStart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="#FFFFFF"
+        android:padding="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="@dimen/dimension20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       />
+
+    <Button
+        android:id="@+id/button_take_photo"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Take a photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+    <Button
+        android:id="@+id/button_select_photo"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Select a photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_take_photo" />
+
+    <ImageView
+        android:id="@+id/imageView_previewImage"
+        android:scaleType="centerCrop"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_add_to_photos_black_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        app:layout_constraintVertical_bias="0.555" />
+
+</android.support.constraint.ConstraintLayout>
