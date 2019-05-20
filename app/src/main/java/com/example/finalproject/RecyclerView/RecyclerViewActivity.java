@@ -75,7 +75,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         Bundle dataReceived = getIntent().getExtras();
         if (dataReceived != null) {
             String tripName = dataReceived.getString(ManageTrip.TITLE);
-            String destination = dataReceived.getString(ManageTrip.DESTIANTION);
+            String destination = dataReceived.getString(ManageTrip.DESTINATION);
             Trips trip = new Trips(tripName, destination);
             mTrips.add(trip);
         }

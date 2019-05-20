@@ -24,4 +24,6 @@ public class Trips {
     public void setmLocatie(String mLocatie) {
         this.mLocatie = mLocatie;
     }
+
+
 }

@@ -22,19 +22,35 @@ import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.example.finalproject.Navigation.NavigationDrawerTrips;
 import com.example.finalproject.R;
-import com.example.finalproject.RecyclerView.RecyclerViewActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class ManageTrip extends FragmentActivity implements CustomDatePickerFragment.OnDataPassStart, CustomDatePickerFragmentOnlyForENDDate.OnDataPassEnd {
+import java.util.HashMap;
+import java.util.Map;
+
+public class ManageTrip extends FragmentActivity
+        implements CustomDatePickerFragment.OnDataPassStart,
+        CustomDatePickerFragmentOnlyForENDDate.OnDataPassEnd {
 
     private static final int PERMISION_CODE_TAKE = 1000;
     private static final int PERMISION_CODE_SELECT = 999;
     private static final int IMAGE_CAPTURE_CODE = 1001;
     private static final int IMAGE_SELECTED_CODE = 1002;
-    public static final String TITLE = "title";
-    public static final String DESTIANTION = "destination";
-    private static final String DATE1 = "date1";
-    private static final String DATE2 = "date2";
+    public static final String TITLE = "Title";
+    public static final String DATE_START = "Start date";
+    public static final String DATE_END = "End date";
+    public static final String NAME = "Name";
+    public static final String DESTINATION = "Destination";
+    public static final String SEAR_SIDE = "Sea side";
+    public static final String MOUNTAIN = "Mountain";
+    public static final String CITY_BREAK = "City break";
+
+
     private String mStartDateReceived, mEndDateReceived;
     private EditText mTripName, mDestination;
     private CheckBox mCityBreak, mSeaSide, mMountain;
@@ -43,6 +59,8 @@ public class ManageTrip extends FragmentActivity implements CustomDatePickerFrag
     private Button mButtonSelectPhoto, mButtonTakePhoto;
     private ImageView mImageView;
     private Uri imageUri;
+
+    private FirebaseFirestore mFirebaseFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +72,8 @@ public class ManageTrip extends FragmentActivity implements CustomDatePickerFrag
         setEndDateOnClickListener();
         takePhotoOnClickListener();
         selectPhotoOnClickListener();
+
+        mFirebaseFirestore = FirebaseFirestore.getInstance();
     }
 
     private void initView() {
@@ -134,12 +154,6 @@ public class ManageTrip extends FragmentActivity implements CustomDatePickerFrag
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
     }
 
-   /* private String getPictureName() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-        String timeStamp = dateFormat.format(new Date());
-        return "Image name" + timeStamp + ".jpg";
-    }*/
-
     private void selectPhotoOnClickListener() {
         mButtonSelectPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,14 +213,8 @@ public class ManageTrip extends FragmentActivity implements CustomDatePickerFrag
     }
 
     public void onClickSave(View view) {
-        String tripName = mTripName.getText().toString();
-        String destination = mDestination.getText().toString();
-        boolean cityBreak = mCityBreak.isChecked();
-        boolean seaSide = mSeaSide.isChecked();
-        boolean mountians = mMountain.isChecked();
-        int rating = mRating.getNumStars();
 
-        if (tripName != null && destination != null && mStartDateReceived != null && mEndDateReceived != null) {
+        /*if (tripName != null && destination != null && mStartDateReceived != null && mEndDateReceived != null) {
             Log.d("Trip Name", tripName);
             Log.d("Destination", destination);
             Log.d("City Break", String.valueOf(cityBreak));
@@ -218,18 +226,61 @@ public class ManageTrip extends FragmentActivity implements CustomDatePickerFrag
         } else {
             Log.d("Please ", "complete all fileds.");
         }
-
         Intent sendIntent = new Intent(ManageTrip.this, RecyclerViewActivity.class);
         sendIntent.putExtra(TITLE, tripName);
         sendIntent.putExtra(DESTIANTION, destination);
         Bundle bundle = new Bundle();
         bundle.putString(TITLE, tripName);
         bundle.putString(DESTIANTION, destination);
-        startActivity(sendIntent,bundle);
+        startActivity(sendIntent, bundle);*/
 
+        String tripName = mTripName.getText().toString();
+        String destination = mDestination.getText().toString();
+        boolean cityBreak = mCityBreak.isChecked();
+        boolean seaSide = mSeaSide.isChecked();
+        boolean mountians = mMountain.isChecked();
+        int rating = mRating.getNumStars();
+
+        Map<String, String> tripsMap = new HashMap<>();
+        tripsMap.put(NAME, tripName);
+        tripsMap.put(DESTINATION, destination);
+        if(seaSide){
+            tripsMap.put(SEAR_SIDE,"True");
+        }
+        if(mountians){
+            tripsMap.put(MOUNTAIN,"True");
+        }
+        if(cityBreak){
+            tripsMap.put(CITY_BREAK,"True");
+        }
+        tripsMap.put(DATE_START,mStartDateReceived);
+        tripsMap.put(DATE_END,mEndDateReceived);
+        tripsMap.put("Rating",String.valueOf(rating));
+
+        CollectionReference tripsColection = mFirebaseFirestore.collection("trips");
+        tripsColection.add(tripsMap)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(ManageTrip.this,
+                                "Trip added to FireStore", Toast.LENGTH_LONG).show();
+                        Log.d("FireSotre", "on succes Listener");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                String error = e.getMessage();
+                Toast.makeText(ManageTrip.this,
+                        "Error: " + error, Toast.LENGTH_LONG).show();
+                Log.d("FireSotre", "on faliure Listener");
+            }
+        });
+
+        Intent intent = new Intent(ManageTrip.this, NavigationDrawerTrips.class);
+        startActivity(intent);
     }
 
-
 }
+
 
 

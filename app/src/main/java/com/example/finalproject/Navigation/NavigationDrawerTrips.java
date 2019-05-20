@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.finalproject.AboutUsDialog.AboutUsFragment;
+import com.example.finalproject.Contact.ContactFragment;
 import com.example.finalproject.ManagerTrip.ManageTrip;
 import com.example.finalproject.R;
 import com.example.finalproject.RecyclerView.AdapterTrips;
@@ -120,6 +121,8 @@ public class NavigationDrawerTrips extends AppCompatActivity
             }
         }else if (id == R.id.about_us) {
             aboutUs();
+        }else if (id == R.id.contact) {
+            contact();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -135,6 +138,12 @@ public class NavigationDrawerTrips extends AppCompatActivity
     public void aboutUs() {
         DialogFragment newFragment = new AboutUsFragment();
         newFragment.show(getSupportFragmentManager(), "info");
+    }
+
+    public void contact(){
+        DialogFragment newFragment = new ContactFragment();
+        newFragment.show(getSupportFragmentManager(), "contact");
+
     }
 
     private void setLayoutManager() {

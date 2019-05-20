@@ -6,15 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ManagerTrip.ManageTrip">
 
-
-
     <EditText
         android:id="@+id/tripName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin16dp"
         android:layout_marginLeft="@dimen/margin16dp"
-        android:layout_marginTop="@dimen/margin20dp"
+        android:layout_marginTop="@dimen/margin16dp"
         android:layout_marginEnd="@dimen/margin20dp"
         android:layout_marginRight="@dimen/margin16dp"
         android:ems="10"
@@ -53,7 +51,8 @@
         android:text="Trip Type"
         android:textSize="@dimen/textSize16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/destination" />
+        app:layout_constraintTop_toBottomOf="@+id/destination"
+        />
 
     <CheckBox
         android:id="@+id/checkBoxCityBreak"
@@ -101,7 +100,8 @@
         android:text="Price"
         android:textSize="@dimen/textSize16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxCityBreak" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxCityBreak"
+        />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -130,7 +130,9 @@
         android:text="Start Date"
         android:textSize="@dimen/textSize16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"/>
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        android:background="@drawable/btn_shape"
+        />
 
     <TextView
         android:id="@+id/textViewStartDate"
@@ -142,8 +144,10 @@
         android:ems="10"
         android:hint="DD/MM/YYYY"
         android:inputType="text"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStartDate" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartDate"
+        android:background="@drawable/text_view_shpe"/>
 
     <Button
         android:id="@+id/buttonEndDate"
@@ -155,7 +159,8 @@
         android:text="End Date"
         android:textSize="@dimen/textSize16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        android:background="@drawable/btn_shape" />
 
     <TextView
         android:id="@+id/textViewEndDate"
@@ -164,11 +169,13 @@
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="24dp"
+        android:gravity="center"
         android:ems="10"
         android:hint="DD/MM/YYYY"
         android:inputType="date"
         app:layout_constraintStart_toEndOf="@+id/textViewStartDate"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEndDate" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonEndDate"
+        android:background="@drawable/text_view_shpe"/>
 
     <TextView
         android:id="@+id/textViewRating"
@@ -180,7 +187,8 @@
         android:text="Rating"
         android:textSize="@dimen/textSize16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEndDate" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEndDate"
+        />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -203,6 +211,7 @@
         android:layout_marginRight="@dimen/margin16dp"
         android:onClick="onClickSave"
         android:text="Save"
+        android:background="@drawable/btn_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -230,7 +239,8 @@
         android:layout_marginTop="24dp"
         android:text="Take a photo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        android:background="@drawable/btn_shape" />
 
     <Button
         android:id="@+id/button_select_photo"
@@ -241,7 +251,8 @@
         android:layout_marginTop="16dp"
         android:text="Select a photo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_take_photo" />
+        app:layout_constraintTop_toBottomOf="@+id/button_take_photo"
+        android:background="@drawable/btn_shape" />
 
     <ImageView
         android:id="@+id/imageView_previewImage"
